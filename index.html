@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BookFlix - discover your next favourite book." />
+  <title>BookFlix | Find your next read</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="BookFlix home">BOOK<span>FLIX</span></a>
+    <nav><a href="#discover">Discover</a><a href="#how-it-works">How it works</a></nav>
+    <button class="outline-btn" id="editChoices">Edit choices</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+        <h1>FIND A BOOK<br><span>WORTH GETTING LOST IN.</span></h1>
+        <p class="hero-copy">Tell us what you love. We'll find stories, ideas and adventures picked just for you.</p>
+        <button class="red-btn" id="startBtn">CHOOSE MY INTERESTS <span>›</span></button>
+      </div>
+      <div class="hero-note">A LIBRARY THAT GETS YOUR TASTE.</div>
+    </section>
+
+    <section class="quiz-section" id="quizSection">
+      <div class="section-heading">
+        <p class="eyebrow">LET'S PERSONALISE YOUR SHELF</p>
+        <h2>What are you in the mood for?</h2>
+        <p>Select as many interests as you like. You can change them anytime.</p>
+      </div>
+      <form id="preferenceForm">
+        <div class="question-block">
+          <div class="question-title"><span>01</span><div><h3>What are you interested in right now?</h3><small>Choose as many as you want</small></div></div>
+          <div id="interestGrid" class="interest-grid"></div>
+        </div>
+        <div class="question-block two-col">
+          <label class="select-field">Your reading mood
+            <select id="mood">
+              <option value="any">Surprise me</option><option value="light">Light and feel-good</option>
+              <option value="thought">Thought-provoking</option><option value="thrill">Suspenseful and thrilling</option>
+              <option value="inspire">Motivating and inspiring</option><option value="emotional">Emotional and moving</option>
+              <option value="adventure">Adventurous</option>
+            </select>
+          </label>
+          <label class="select-field">Preferred book length
+            <select id="length">
+              <option value="any">Any length</option><option value="short">Short (under 200 pages)</option>
+              <option value="medium">Medium (200–400 pages)</option><option value="long">Long (400+ pages)</option>
+            </select>
+          </label>
+          <label class="select-field">Reading level
+            <select id="level"><option value="any">Any level</option><option value="easy">Easy and beginner-friendly</option><option value="intermediate">Intermediate</option><option value="advanced">Detailed / advanced</option></select>
+          </label>
+          <label class="select-field">Language preference
+            <select id="language"><option value="any">Any language</option><option value="eng">English</option></select>
+          </label>
+        </div>
+        <div class="form-actions"><span id="selectedCount">0 interests selected</span><button class="red-btn" type="submit">SHOW MY BOOKS <span>›</span></button></div>
+      </form>
+    </section>
+
+    <section class="results-section" id="discover">
+      <div class="results-top">
+        <div><p class="eyebrow">MADE FOR YOUR TASTE</p><h2>Your recommended shelf</h2><p id="resultsMessage">Choose your interests to get personalised recommendations.</p></div>
+        <div class="result-tools"><input id="searchInput" type="search" placeholder="Search books or authors..." aria-label="Search books"><select id="sortSelect" aria-label="Sort books"><option value="match">Best match</option><option value="title">Title A–Z</option><option value="year">Newest first</option></select></div>
+      </div>
+      <div id="loading" class="loading hidden"><div class="spinner"></div><p>Finding your next favourite books…</p></div>
+      <div id="shelves"><div class="empty-state"><div class="empty-icon">▤</div><h3>Your bookshelf is waiting</h3><p>Pick a few interests above and we'll build your personalised collection.</p></div></div>
+      <p class="api-note">Book information and covers are provided by Open Library. Recommendations may vary as its catalogue is updated.</p>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+      <p class="eyebrow">SIMPLE. PERSONAL. FREE.</p><h2>How BookFlix works</h2>
+      <div class="steps"><article><b>01</b><h3>Choose your interests</h3><p>Select genres, topics and the kind of reading experience you want.</p></article><article><b>02</b><h3>Explore your shelf</h3><p>We search a large public book catalogue and sort titles around your choices.</p></article><article><b>03</b><h3>Meet your next book</h3><p>Open a title to see its description, author, publication details and library link.</p></article></div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#">BOOK<span>FLIX</span></a><p>Made for readers. A student mini project.</p><p>BookFlix is an independent project and is not affiliated with Netflix.</p></footer>
+
+  <div class="modal hidden" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card"><button class="close-modal" id="closeModal" aria-label="Close">×</button><div id="modalContent"></div></div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
